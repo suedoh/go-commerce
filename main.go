@@ -8,9 +8,13 @@ import (
 
 func main()  {
    app := weavebox.New()
+   adminRoute := app.Box("/admin")
 
    productHandler := &api.ProductHandler{}
 
-   app.Get("/product", productHandler.HandleGetProduct)
+
+   adminRoute.Get("/product", productHandler.HandleGetProduct)
+   adminRoute.Post("/product", productHandler.HandlePostProduct)
+
    app.Serve(3001)
 }
