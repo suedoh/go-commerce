@@ -31,7 +31,7 @@ func NewProductHandler(pStore ProductStorer) *ProductHandler {
 
 
 func (h *ProductHandler) HandlePostProduct(c *weavebox.Context) error {
-	productReq := CreateProductRequest{}
+	productReq := &CreateProductRequest{}
 	if err := json.NewDecoder(c.Request().Body).Decode(productReq); err != nil {
 		return err
 	}
