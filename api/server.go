@@ -5,6 +5,7 @@ import (
     "net/http"
 
     "github.com/suedoh/go-commerce/types"
+    "github.com/suedoh/go-commerce/store"
 
     "github.com/anthdm/weavebox"
 )
@@ -14,16 +15,11 @@ type CreateProductRequest struct {
    Name string `json:"name"`
 }
 
-type ProductStorer interface {
-   Insert(*types.Product) error 
-   GetByID(string) (*types.Product, error)
-}
-
 type ProductHandler struct {
-   store ProductStorer 
+   store store.ProductStorer 
 }
 
-func NewProductHandler(pStore ProductStorer) *ProductHandler {
+func NewProductHandler(pStore store.ProductStorer) *ProductHandler {
     return &ProductHandler{
         store: pStore,
     } 
