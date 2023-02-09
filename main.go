@@ -22,8 +22,9 @@ func main()  {
     app.ErrorHandler = handleAPIError
     adminRoute := app.Box("/admin")
 
-    client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://0.0.0.0:27017"))
+    client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://127.0.0.1:27017"))
     if err != nil {
+        fmt.Println(err)
         panic(err)
     }
 
